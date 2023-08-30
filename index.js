@@ -2,6 +2,7 @@ import express from 'express';
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcrypt';
 import mongoose from 'mongoose';
+import {} from 'dotenv/config';
 import { validationResult } from 'express-validator';
 
 import { registerValidation } from './validations/auth.js';
@@ -10,9 +11,7 @@ import UserModel from './models/user.js';
 import checkAuth from './utils/checkAuth.js';
 
 mongoose
-  .connect(
-    'mongodb+srv://admin:wwwwww@cluster0.hiomwfo.mongodb.net/blog?retryWrites=true&w=majority'
-  )
+  .connect(process.env.MONGODB_URI)
   .then(() => console.log('DB ok'))
   .catch((err) => console.log('DB error', err));
 
@@ -129,9 +128,6 @@ app.get('/auth/me', checkAuth, async (req, res) => {
     const { passwordHash, ...userData } = user._doc;
 
     res.json(userData);
-    // res.json({
-    //   success: true,
-    // });
   } catch (err) {
     console.log(err);
 
@@ -141,7 +137,7 @@ app.get('/auth/me', checkAuth, async (req, res) => {
   }
 });
 
-app.listen(4444, (err) => {
+app.listen(process.env.PORT, (err) => {
   if (err) {
     return console.error(err);
   }

@@ -1,2 +1,9 @@
 /node_modules
 /package-lock.json
+/config/db.js
+*.dbmdl
+*.dbproj.schemaview
+.env
+Thumbs.db
+.vscode
+uploads/*
