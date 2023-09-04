@@ -9,7 +9,7 @@ import { PostController, UserController } from './controllers/index.js';
 
 mongoose
   .connect(process.env.MONGODB_URI)
-  .then(() => console.log('DB ok'))
+  .then(() => console.log('DB OK'))
   .catch((err) => console.log('DB error', err));
 
 const app = express();
