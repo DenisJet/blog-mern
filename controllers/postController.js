@@ -41,6 +41,7 @@ export const getOne = async (req, res) => {
       { $inc: { viewsCount: 1 } },
       { returnDocument: 'after' }
     )
+      .populate({ path: 'user', select: ['fullName', 'avatarUrl'] })
       .then((doc) => {
         if (!doc) {
           return res.status(404).json({
