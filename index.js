@@ -54,6 +54,8 @@ app.patch(
   PostController.update
 );
 
+app.patch('/posts/:id/postComment', checkAuth, handleValidationErrors, PostController.postComment);
+
 app.listen(process.env.PORT, (err) => {
   if (err) {
     return console.error(err);

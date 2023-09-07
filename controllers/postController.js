@@ -153,3 +153,33 @@ export const update = async (req, res) => {
     });
   }
 };
+
+export const postComment = async (req, res) => {
+  try {
+    const postId = req.params.id;
+    const post = await PostModel.findOne({ _id: postId });
+
+    await PostModel.updateOne(
+      { _id: postId },
+      {
+        comments: [
+          ...post.comments,
+          {
+            user: {
+              fullName: req.body.user.fullName,
+              avatarUrl: req.body.user.avatarUrl,
+            },
+            text: req.body.text,
+          },
+        ],
+      }
+    );
+
+    res.json({ success: true });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({
+      message: 'Не удалось оставить комментарий',
+    });
+  }
+};
