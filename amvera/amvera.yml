@@ -1,0 +1,12 @@
+meta:
+  environment: node
+  toolchain:
+    name: npm
+    version: 18
+build:
+  artifacts:
+    '*': /
+run:
+  scriptName: amvera/
+  persistenceMount: /data
+  containerPort: 4444
