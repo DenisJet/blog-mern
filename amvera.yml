@@ -1,12 +1,5 @@
 meta:
-  environment: node
+  environment: db
   toolchain:
-    name: npm
-    version: 18
-build:
-  artifacts:
-    '*': /
-run:
-  scriptName: amvera/
-  persistenceMount: /data
-  containerPort: 4444
+    name: mongo-express
+    version: 0.49
