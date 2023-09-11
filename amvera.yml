@@ -3,3 +3,7 @@ meta:
   toolchain:
     name: mongo-express
     version: 0.49
+
+run:
+  command: npm run start
+  containerPort: 4444
