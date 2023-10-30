@@ -1,8 +1,9 @@
 meta:
-  environment: db
+  environment: node
   toolchain:
-    name: mongo-express
-    version: 0.49
+    name: npm
+    version: 18
 
 run:
+  scriptName: index.js
   containerPort: 8080
